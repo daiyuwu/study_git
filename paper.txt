@@ -32,7 +32,7 @@
 	$ git log [branchName] --oneline
 	
 # commit
-	$ git commit -m "[message]"
+	$ git commit -m "[messageText]"
 	
 # branch	
 	$ git branch
