@@ -41,6 +41,12 @@
 	$ git branch [branchName] -D
 	
 # checkout
+	$ git checkout [branchName]
+	$ git checkout [commitId]
+	$ git checkout -b [branchName]
+	$ git checkout [commitId] -b [branchName]
+	$ git checkout --detach [commitId]
+	
 # merge
 # cherry-pick
 # revert
