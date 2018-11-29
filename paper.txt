@@ -1,0 +1,52 @@
+# flow
+	# demo
+	# explain
+		# remote
+		# local
+			# log
+			# commit
+			# branch
+			# checkout
+			# merge like
+				# merge
+				# cherry-pick
+				# revert
+				# rebase
+
+# demo
+	drawing_live
+	drawing_no_vcs
+	drawing
+
+# tool
+	git bash (git for windows)
+	sourcetree
+	git extensions
+
+# remote
+	clone
+
+# log
+	$ git log
+	$ git log --oneline
+	$ git log [branchName] --oneline
+	
+# commit
+	$ git commit -m "[message]"
+	
+# branch	
+	$ git branch
+	$ git branch
+	
+# checkout
+	
+
+# merge
+# cherry-pick
+# revert
+# rebase
+
+
+	
+	
+
