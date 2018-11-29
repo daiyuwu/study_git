@@ -36,11 +36,11 @@
 	
 # branch	
 	$ git branch
-	$ git branch
+	$ git branch [branchName]
+	$ git branch [branchName] -d
+	$ git branch [branchName] -D
 	
 # checkout
-	
-
 # merge
 # cherry-pick
 # revert
