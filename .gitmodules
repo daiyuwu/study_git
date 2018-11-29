@@ -1,0 +1,4 @@
+[submodule "pratice"]
+	path = pratice
+	url = C:/Work/Class/study/git/pratice
+	branch = refs/heads/master
