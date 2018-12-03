@@ -48,6 +48,11 @@
 	$ git checkout --detach [commitId]
 	
 # merge
+	$ git merge [branchName]
+	$ git merge [branchName] --no-ff
+	$ git merge [branchName] --no-commit
+	$ git merge [branchName] --no-ff --no-commit
+
 # cherry-pick
 # revert
 # rebase
