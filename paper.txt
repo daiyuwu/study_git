@@ -59,12 +59,14 @@
 	$ git cherry-pick [branchName]
 	$ git cherry-pick [tagName]
 	$ git cherry-pick [branchName] -n [parentNum]
+	$ git cherry-pick [--continue/abort/quit/skip]
 
 # revert
 	$ git revert [commitId]
 	$ git revert [branchName]
 	$ git revert [tagname]
 	$ git revert [branchName] -n [parentNum]
+	$ git revert [--continue/abort/quit/skip]
 
 # rebase
 
