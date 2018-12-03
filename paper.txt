@@ -12,6 +12,7 @@
 				# cherry-pick
 				# revert
 				# rebase
+		# reflog
 
 # demo
 	drawing_live
@@ -57,7 +58,10 @@
 # revert
 # rebase
 
-
+# reflog
+	$ git reflog
+	$ git reset [extCommitId/refName]
+	$ git reset ORIG_HEAD
 	
 	
 
