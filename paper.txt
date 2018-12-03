@@ -61,6 +61,11 @@
 	$ git cherry-pick [branchName] -n [parentNum]
 
 # revert
+	$ git revert [commitId]
+	$ git revert [branchName]
+	$ git revert [tagname]
+	$ git revert [branchName] -n [parentNum]
+
 # rebase
 
 # reflog
