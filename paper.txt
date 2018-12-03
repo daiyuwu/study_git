@@ -55,6 +55,11 @@
 	$ git merge [branchName] --no-ff --no-commit
 
 # cherry-pick
+	$ git cherry-pick [commitId]
+	$ git cherry-pick [branchName]
+	$ git cherry-pick [tagName]
+	$ git cherry-pick [branchName] -n [parentNum]
+
 # revert
 # rebase
 
