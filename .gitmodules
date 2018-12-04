@@ -1,4 +1,4 @@
 [submodule "pratice"]
 	path = pratice
-	url = C:/Work/Class/study/git/pratice
-	branch = refs/heads/master
+	url = https://taiyue@bitbucket.org/taiyue/study_git_pratice.git
+	branch = master
