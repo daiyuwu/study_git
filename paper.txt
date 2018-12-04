@@ -1,11 +1,13 @@
 # flow
 	# demo
+	# tool
 	# explain
 		# remote
 		# local
-			# log
+			# status
 			# commit
 			# branch
+			# tag
 			# checkout
 			# merge like
 				# merge
@@ -20,20 +22,36 @@
 	drawing
 
 # tool
-	git bash (git for windows)
-	sourcetree
-	git extensions
+	# CLI
+		git bash (git for windows)
+	# GUI (base on CLI)
+		sourcetree
+		git extensions
 
 # remote
 	clone
 
-# log
+# status
+	$ git status
+
+	$ git add [fileName]
+	$ git add [fileName with *]
+	$ git add .
+	$ git add -A
+	$ git add -u
+	
 	$ git log
 	$ git log --oneline
 	$ git log [branchName] --oneline
+
+	$ git reset
+	$ git reset [commitId]
 	
 # commit
+	$ git commit
 	$ git commit -m "[messageText]"
+	$ git commit -a -m "[messageText]"
+	$ git commit --amend -m "[messageText]"
 	
 # branch	
 	$ git branch
@@ -41,12 +59,16 @@
 	$ git branch [branchName] -d
 	$ git branch [branchName] -D
 	
+# tag
+	$ git tag [tagName]
+	$ git tag [tagName] -a -m "[messageText]"
+
 # checkout
-	$ git checkout [branchName]
 	$ git checkout [commitId]
+	$ git checkout [branchName]
 	$ git checkout -b [branchName]
 	$ git checkout [commitId] -b [branchName]
-	$ git checkout --detach [commitId]
+	$ git checkout --detach [branchName]
 	
 # merge
 	$ git merge [branchName]
@@ -56,14 +78,12 @@
 
 # cherry-pick
 	$ git cherry-pick [commitId]
-	$ git cherry-pick [branchName]
 	$ git cherry-pick [tagName]
 	$ git cherry-pick [branchName] -n [parentNum]
 	$ git cherry-pick [--continue/abort/quit/skip]
 
 # revert
 	$ git revert [commitId]
-	$ git revert [branchName]
 	$ git revert [tagname]
 	$ git revert [branchName] -n [parentNum]
 	$ git revert [--continue/abort/quit/skip]
@@ -78,6 +98,7 @@
 		#  s, squash = use commit, but meld into previous commit
 		#  f, fixup = like "squash", but discard this commit's log message
 		#  x, exec = run command (the rest of the line) using shell
+	$ git rebase [--continue/abort/quit/skip]
 
 # reflog
 	$ git reflog
