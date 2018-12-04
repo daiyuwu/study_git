@@ -1,8 +1,12 @@
 <html>
 	<body>
-		
+		Test
 	</body>
 	<script>
-	
+		fetch('http://localhost:5500/paper.txt')
+			.then(rs => rs.text())
+			.then(rsText => {
+				console.log(rsText);
+			});
 	</script>
 </html>
