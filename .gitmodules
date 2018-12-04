@@ -2,3 +2,7 @@
 	path = pratice
 	url = https://taiyue@bitbucket.org/taiyue/study_git_pratice.git
 	branch = master
+[submodule "sample/drawing"]
+	path = sample/drawing
+	url = https://taiyue@bitbucket.org/taiyue/study_git_drawing.git
+	branch = master
