@@ -43,7 +43,7 @@
 		}
 
 		let renderLine = function(line) {
-			let html = '<div class="line">';
+			let html = `<div class="line" style="background-color: ${layerColor(line.layer)}">`;
 			for (let i=0; i<line.layer; i++)
 				html += "　　";
 			html += line.content;
@@ -51,6 +51,21 @@
 			html += "<br />";
 
 			return html;
+		}
+
+		let layerColor = function(layer) {
+			switch(layer) {
+				case 4:
+					return "#fafdff";
+				case 3:
+					return "#edefec";
+				case 2:
+					return "#d6d6d4";
+				case 1:
+					return "#c3bfb4";
+				case 0:
+					return "#9e9393";
+			}
 		}
 
 		class Line {
