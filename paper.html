@@ -1,12 +1,95 @@
 <html>
+	<head>
+		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<style>
+			body {
+				font-family: 'Roboto', sans-serif;
+			}
+			.line {
+				display: inline-block;
+				width: 100%;
+			}
+			.common-cm {
+				color: #e02121;
+			}
+		</style>
+	</head>
 	<body>
-		Test
+		<div id="app">Test</div>
 	</body>
 	<script>
 		fetch('http://localhost:5500/paper.txt')
 			.then(rs => rs.text())
 			.then(rsText => {
-				console.log(rsText);
+				parse(rsText);
 			});
+
+		let parse = function(text) {
+			let lines = text.split("\n");
+			
+			let lineArr = [];
+			for (l of lines) {
+				let line = new Line(l.trim(), (l.match(/\t/g) || []).length);
+				lineArr.push(line);
+			}
+
+			renderLines(lineArr);
+		};
+
+		let renderLines = function(lines) {
+			let targetTag = document.getElementById("app");
+			let html = "";
+			for (l of lines) {
+				html += renderLine(l);
+			}
+			targetTag.innerHTML = html;
+		}
+
+		let renderLine = function(line) {
+			let html = `<div class="line" style="background-color: ${layerColor(line.layer)}">`;
+			for (let i=0; i<line.layer; i++)
+				html += "　　";
+			html += renderContent(line.content);
+			html += "</div>";
+			html += "<br />";
+
+			return html;
+		}
+
+		let layerColor = function(layer) {
+			switch(layer) {
+				case 4:
+					return "#fafdff";
+				case 3:
+					return "#edefec";
+				case 2:
+					return "#d6d6d4";
+				case 1:
+					return "#c3bfb4";
+				case 0:
+					return "#9e9393";
+			}
+		}
+
+		let renderContent = function(content) {
+			let html = "";			
+
+			if (content.includes("*$")) {
+				html += `<span class="common-cm">`;
+				content = content.replace("*$", "$");
+			} else 
+				html += `<span>`;
+			html += content;
+			html += "</span>";
+			
+			return html;
+		}
+
+		class Line {
+			constructor(content, layer) {
+				this.content = content;
+				this.layer = layer;
+			}
+		}
 	</script>
 </html>
