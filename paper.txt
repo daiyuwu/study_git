@@ -46,6 +46,7 @@
 
 	*$ git reset
 	$ git reset [commitId]
+	$ git reset [commitId] [--soft/mixed/hard]
 	
 # commit
 	$ git commit
