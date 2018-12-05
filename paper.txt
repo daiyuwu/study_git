@@ -15,6 +15,7 @@
 				# revert
 				# rebase
 		# reflog
+	# other
 
 # demo
 	drawing_live
@@ -29,7 +30,8 @@
 		git extensions
 
 # remote
-	clone
+	# clone
+		$ git clone [repoUrl]
 
 # status
 	*$ git status
@@ -56,9 +58,11 @@
 	
 # branch	
 	*$ git branch
+	$ git branch -a
 	*$ git branch [branchName]
 	$ git branch [branchName] -d
 	$ git branch [branchName] -D
+	$ git branch -m [oldBranchName] [newBranchName]
 	
 # tag
 	$ git tag [tagName]
@@ -69,6 +73,7 @@
 	*$ git checkout [branchName]
 	*$ git checkout -b [branchName]
 	$ git checkout [commitId] -b [branchName]
+	*$ git checkout -t [remoteBranchName]
 	$ git checkout --detach [branchName]
 	
 # merge
@@ -76,6 +81,7 @@
 	$ git merge [branchName] --no-ff
 	$ git merge [branchName] --no-commit
 	$ git merge [branchName] --no-ff --no-commit
+	$ git merge [branchName] --squash
 
 # cherry-pick
 	*$ git cherry-pick [commitId]
@@ -104,5 +110,6 @@
 	$ git reset [extCommitId/refName]
 	*$ git reset ORIG_HEAD
 	
-	
+# other
+	$ gitk --all &
 
