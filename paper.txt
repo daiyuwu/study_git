@@ -35,35 +35,35 @@
 
 # status
 	*$ git status
-
+	---
 	$ git add [fileName]
 	$ git add [fileName with *]
 	*$ git add .
 	$ git add -A
 	$ git add -u
-	
+	---
 	*$ git log
 	*$ git log --oneline
 	$ git log [branchName] --oneline
-
+	---
 	*$ git reset
 	$ git reset [commitId]
 	$ git reset [commitId] [--soft/mixed/hard]
-	
+
 # commit
 	$ git commit
 	*$ git commit -m "[messageText]"
 	$ git commit -a -m "[messageText]"
 	*$ git commit --amend -m "[messageText]"
-	
-# branch	
+
+# branch
 	*$ git branch
 	$ git branch -a
 	*$ git branch [branchName]
 	$ git branch [branchName] -d
 	$ git branch [branchName] -D
 	$ git branch -m [oldBranchName] [newBranchName]
-	
+
 # tag
 	$ git tag [tagName]
 	$ git tag [tagName] -a -m "[messageText]"
@@ -75,7 +75,7 @@
 	$ git checkout [commitId] -b [branchName]
 	*$ git checkout -t [remoteBranchName]
 	$ git checkout --detach [branchName]
-	
+
 # merge
 	*$ git merge [branchName]
 	$ git merge [branchName] --no-ff
@@ -109,7 +109,6 @@
 	*$ git reflog
 	$ git reset [extCommitId/refName]
 	*$ git reset ORIG_HEAD
-	
+
 # other
 	$ gitk --all &
-
