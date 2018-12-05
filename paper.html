@@ -40,55 +40,57 @@
 			let targetTag = document.getElementById("app");
 			let html = "";
 			for (l of lines) {
-				html += renderLine(l);
+				html += l.genHtml();
 			}
 			targetTag.innerHTML = html;
-		}
-
-		let renderLine = function(line) {
-			let html = `<div class="line" style="background-color: ${layerColor(line.layer)}">`;
-			for (let i=0; i<line.layer; i++)
-				html += "　　";
-			html += renderContent(line.content);
-			html += "</div>";
-			html += "<br />";
-
-			return html;
-		}
-
-		let layerColor = function(layer) {
-			switch(layer) {
-				case 4:
-					return "#fafdff";
-				case 3:
-					return "#edefec";
-				case 2:
-					return "#d6d6d4";
-				case 1:
-					return "#c3bfb4";
-				case 0:
-					return "#9e9393";
-			}
-		}
-
-		let renderContent = function(content) {
-			let html = "";			
-
-			if (content.includes("*$")) {
-				html += `<span class="common-cm">`;
-				content = content.replace("*$", "$");
-			} else 
-				html += `<span>`;
-			html += content;
-			html += "</span>";
-			
-			return html;
 		}
 
 		class Line {
 			constructor(content, layer) {
 				this.content = content;
 				this.layer = layer;
+			}
+
+			genHtml() {
+				let html = `<div class="line" style="background-color: ${this.layerColor()}">`;
+				for (let i=0; i<this.layer; i++)
+					html += "　　";
+				html += this.renderContent();
+				html += "</div>";
+				html += "<br />";
+
+				return html;
+			}
+
+			renderContent() {
+				let html = "";			
+
+				if (this.content.includes("*$")) {
+					html += `<span class="common-cm">`;
+					html += this.content.replace("*$", "$");
+				} else {
+					html += `<span>`;
+					html += this.content;
+				}
+				
+				html += "</span>";
+				
+				return html;
+			}
+
+			layerColor() {
+				switch(this.layer) {
+					case 4:
+						return "#fafdff";
+					case 3:
+						return "#edefec";
+					case 2:
+						return "#d6d6d4";
+					case 1:
+						return "#c3bfb4";
+					case 0:
+						return "#9e9393";
+				}
 			}
 		}
 	</script>
