@@ -46,9 +46,9 @@
 	*$ git log --oneline
 	$ git log [branchName] --oneline
 	---
-	*$ git reset
+	$ git reset
 	$ git reset [commitId]
-	$ git reset [commitId] [--soft/mixed/hard]
+	*$ git reset [commitId] [--soft/mixed/hard]
 
 # commit
 	$ git commit
