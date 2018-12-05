@@ -1,0 +1,50 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.line {
+    display: inline-block;
+    width: 100%;
+}
+.common-cm {
+    color: #e02121;
+}
+.paper {
+    margin: 10px;
+    display: flex;
+}
+.paper-headline {
+    margin: 10px;
+}
+.paper-content {
+    flex: 15;
+    display: inline-block;
+    font-size: 20px;
+    vertical-align: middle;
+    background-color: #cbe3f5;
+}
+.slide-btn {
+    flex: 1;
+    display: inline-block;
+    cursor: pointer;
+    text-align:center;
+    font-weight: bolder;
+    font-size: 100px;
+    user-select: none;
+}
+.slide-btn::before {
+    content:'';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.slide-btn:hover {
+    background-color: #d8fdbc;
+    color: red;
+}
+.slide-none {
+    flex: 1;
+    display: inline-block;
+    text-align:center;
+    font-weight: bolder;
+    font-size: 100px;
+}
