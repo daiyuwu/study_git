@@ -15,6 +15,7 @@
 				# revert
 				# rebase
 		# reflog
+	# config
 	# other
 
 # demo
@@ -109,6 +110,12 @@
 	*$ git reflog
 	$ git reset [extCommitId/refName]
 	*$ git reset ORIG_HEAD
+
+# config
+	$ git config [option]
+	$ git config [option] [settingValue]
+	$ git config [option] [--local/global/system]
+	$ git --list --show-origin
 
 # other
 	$ gitk --all &
