@@ -111,6 +111,11 @@
 	$ git reset [extCommitId/refName]
 	*$ git reset ORIG_HEAD
 
+# worktree
+	$ git worktree add [newFolderPath] [orgBranchName]
+	$ git worktree add [newFolderPath] -b [newBranchName]
+	$ git worktree prune
+
 # config
 	$ git config [option]
 	$ git config [option] [settingValue]
