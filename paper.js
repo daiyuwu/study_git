@@ -35,12 +35,13 @@ let trans2PaperPages = function(lines) {
     for (line of lines) {
         if (line.layer === 0 && line.content.startsWith("# "))
             headLine = line;
+        else
+            contentLines.push(line);
         if (line.content === '') {
             pages.push(new PaperPage(headLine, contentLines));
             headLine = null;
             contentLines = [];
         }
-        contentLines.push(line);
     }
 
     return pages;
