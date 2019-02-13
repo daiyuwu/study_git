@@ -8,11 +8,30 @@ let next = function() {
     paper.next();
 }
 
-fetch('http://localhost:5500/paper.txt')
-    .then(rs => rs.text())
-    .then(rsText => {
-        parseAndRender(rsText);
-    });
+let processBindkey = function(e) {
+    switch (e.keyCode) {
+        case 37:
+            pre();
+            break;
+        case 39:
+            next();
+            break;
+    }
+}
+
+let bindKeyboard = function() {
+    document.onkeydown = processBindkey;
+}
+
+let init = function() {
+    fetch('http://localhost:5500/paper.txt')
+        .then(rs => rs.text())
+        .then(rsText => {
+            parseAndRender(rsText);
+        });
+    
+    bindKeyboard();
+}
 
 let parseAndRender = function(text) {
     let pureLines = text.split("\n");
@@ -63,11 +82,15 @@ class Paper {
     }
 
     pre() {
+        if (this.pageIdx <= 0)
+            return;
         this.pageIdx -= 1;
         this.renderPage();
     }
 
     next() {
+        if (this.pageIdx >= this.pageTotalNum-1)
+            return;
         this.pageIdx += 1;
         this.renderPage();
     }
@@ -155,3 +178,5 @@ class Line {
         }
     }
 }
+
+init();
