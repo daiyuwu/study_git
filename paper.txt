@@ -77,6 +77,8 @@
 		$ git checkout [commitId] -b [branchName]
 		*$ git checkout -t [remoteBranchName]
 		$ git checkout --detach [branchName]
+		$ git checkout -b [remoteBranchName] [remoteAlias]/[remoteBranchName]
+		$ git checkout --track [remoteAlias]/[remoteBranchName]
 
 # local
 	# merge
@@ -117,14 +119,39 @@
 		$ git reset [extCommitId/refName]
 		*$ git reset ORIG_HEAD
 
+# local
+	# worktree
+		$ git worktree add [newFolderPath] [orgBranchName]
+		$ git worktree add [newFolderPath] -b [newBranchName]
+		$ git worktree prune
+
 # remote
 	# clone
 		$ git clone [repoUrl]
 
-# worktree
-	$ git worktree add [newFolderPath] [orgBranchName]
-	$ git worktree add [newFolderPath] -b [newBranchName]
-	$ git worktree prune
+# remote
+	# remote
+		*$ git remote add [remoteRepoAlias] [remoteRepoUrl]
+	
+# remote
+	# push
+		*$ git push [remoteRepoAlias] [branchName]
+		*$ git push -u [remoteRepoAlias] [branchName]
+		$ git push [remoteRepoAlias] [localBranchName]:[remoteBranchName]
+
+# remote
+	# pull
+		*$ git pull
+		$ git pull --no-ff
+		*$ git pull --rebase
+		$ git pull [remoteRepoAlias] [branchName]
+		$ git pull [remoteRepoAlias] [localBranchName]:[remoteBranchName]
+
+# remote
+	# fetch
+		$ git fetch
+		$ git fetch [remoteRepoAlias] [branchName]
+		$ git fetch [remoteRepoAlias] [localBranchName]:[remoteBranchName]
 
 # config
 	$ git config [option]
