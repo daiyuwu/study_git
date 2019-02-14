@@ -1,5 +1,15 @@
 body {
     font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+#app {
+    display: flex;
+    width: 95vw;
+    overflow: hidden;
+    position: relative;
 }
 .line {
     display: inline-block;
@@ -9,21 +19,31 @@ body {
     color: #e02121;
 }
 .paper {
-    margin: 10px;
+    margin: 5px;
     display: flex;
+    flex-grow: 1;
+    left: 0;
+    transition: left 300ms ease-in-out;
+    position: relative;
+}
+.prepend-paper {
+    left: -100vw;
+}
+.append-paper {
+    left: 100vw;
 }
 .paper-headline {
     margin: 10px;
 }
 .paper-content {
-    flex: 15;
+    flex-grow: 15;
     display: inline-block;
     font-size: 20px;
     vertical-align: middle;
     background-color: #cbe3f5;
 }
 .slide-btn {
-    flex: 1;
+    flex-grow: 1;
     display: inline-block;
     cursor: pointer;
     text-align:center;

@@ -1,4 +1,5 @@
 let paper = null;
+let lock = false;
 
 let pre = function() {
     paper.pre();
@@ -84,19 +85,26 @@ class Paper {
     pre() {
         if (this.pageIdx <= 0)
             return;
+        if (lock)
+            return;
         this.pageIdx -= 1;
-        this.renderPage();
+        // this.renderPage();
+        this.slidePre();
     }
 
     next() {
         if (this.pageIdx >= this.pageTotalNum-1)
             return;
+        if (lock)
+            return;
         this.pageIdx += 1;
-        this.renderPage();
+        // this.renderPage();
+        this.slideNext();
     }
 
-    renderPage() {
-        let targetTag = document.getElementById("app");
+    
+
+    genPageHtml() {
         let html = "";
         let page = this.pages[this.pageIdx];
     
@@ -118,8 +126,100 @@ class Paper {
         else
             html += "<div class='slide-none'></div>";
         html += "</div>";
+
+        return html;
+    }
+
+    genPageElement() {
+        let element = document.createElement("div");
+        element.setAttribute("class", "paper");
+
+        let page = this.pages[this.pageIdx];
     
-        targetTag.innerHTML = html;
+        let preBtn = document.createElement("div");
+        if (this.pageIdx > 0) {
+            preBtn.setAttribute("class", "slide-btn");
+            preBtn.setAttribute("onClick", "pre()");
+            preBtn.appendChild(new Text("<"));
+        } else {
+            preBtn.setAttribute("class", "slide-none");
+        }
+        element.appendChild(preBtn);
+
+        let paperContent = document.createElement("div");
+        paperContent.setAttribute("class", "paper-content");
+        element.appendChild(paperContent);
+        let paperHeadline = document.createElement("h1");
+        paperHeadline.setAttribute("class", "paper-headline");
+        paperHeadline.append(new Text(page.headLine.content));
+        paperContent.appendChild(paperHeadline);
+        let paperContentLines = document.createElement("div");
+        for (line of page.contentLines) {
+            paperContentLines.appendChild(line.genElement());
+            paperContentLines.appendChild(document.createElement("br"));
+        }
+        paperContent.appendChild(paperContentLines);
+        let nextBtn = document.createElement("div");
+        if (this.pageIdx < this.pageTotalNum-1) {
+            nextBtn.setAttribute("class", "slide-btn");
+            nextBtn.setAttribute("onClick", "next()");
+            nextBtn.appendChild(new Text(">"));
+        } else {
+            nextBtn.setAttribute("class", "slide-none");
+        }
+        element.appendChild(nextBtn);
+
+        return element;
+    }
+
+    renderPage() {
+        let targetTag = document.getElementById("app");
+        let pageHtml = this.genPageHtml();
+    
+        targetTag.innerHTML = pageHtml;
+    }
+
+    slidePre() {
+        lock = true;
+
+        let targetTag = document.getElementById("app");
+        let papers = document.getElementsByClassName("paper");
+        let oldPaper = papers[0];
+        let newPaper = this.genPageElement();
+        newPaper.setAttribute("class", "paper prepend-paper");
+
+        targetTag.setAttribute("style", "width:190vw; left: -100vw");
+        
+        targetTag.insertBefore(newPaper, oldPaper);
+        oldPaper.setAttribute("style", "left:100vw;");
+
+        setTimeout(()=>{
+                oldPaper.remove();
+                newPaper.setAttribute("style", "left:0;");
+                targetTag.setAttribute("style", "width: 95vw;");
+                lock = false;
+        }, 300);
+    }
+
+    slideNext() {
+        lock = true;
+
+        let targetTag = document.getElementById("app");
+        let papers = document.getElementsByClassName("paper");
+        let oldPaper = papers[0];
+        let newPaper = this.genPageElement();
+        newPaper.setAttribute("class", "paper append-paper");
+
+        targetTag.setAttribute("style", "width: 190vw;");
+        oldPaper.setAttribute("style", "left:-100vw;");
+        targetTag.appendChild(newPaper);
+
+        setTimeout(()=>{
+                oldPaper.remove();
+                newPaper.setAttribute("style", "left:0;");
+                targetTag.setAttribute("style", "width: 95vw;");
+                lock = false;
+        }, 300);
     }
 }
 
@@ -147,6 +247,19 @@ class Line {
         return html;
     }
 
+    genElement() {
+        let element = document.createElement("div");
+        element.setAttribute("class", "line");
+        element.setAttribute("style", `background-color: ${this.layerColor()}`);
+        let preSpace = "";
+        for (let i=0; i<this.layer; i++)
+            preSpace += "　　";
+        let textEle = this.genContentElement(preSpace);
+        element.appendChild(textEle);
+        
+        return element;
+    }
+
     renderContent() {
         let html = "";			
 
@@ -161,6 +274,19 @@ class Line {
         html += "</span>";
         
         return html;
+    }
+
+    genContentElement(preSpace) {
+        let element = document.createElement("span");
+
+        if (this.content.includes("*$")) {
+            element.setAttribute("class", "common-cm");
+            element.appendChild(new Text(preSpace + this.content.replace("*$", "$")));
+        } else {
+            element.appendChild(new Text(preSpace + this.content));
+        }
+        
+        return element;
     }
 
     layerColor() {
